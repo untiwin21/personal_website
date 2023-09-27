@@ -1,0 +1,16 @@
+h2+ul{
+	font-size: 200%;
+}
+
+ul.horizon_bar{
+	list-style-type: none;
+	font-weight: bold;
+}
+
+a:link{
+	color: blue;
+}
+
+a:visited{
+	color:purple;
+}
