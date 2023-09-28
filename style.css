@@ -1,15 +1,43 @@
-h2+ul{
-	font-size: 200%;
+#site_area{
+	margin-left: 100px;
 }
 
-ul.horizon_bar{
-	list-style-type: none;
-	font-weight: bold;
+#contents{
+	
 }
 
-a:link{
-	color: blue;
+#main{
+	margin-left:200px;
 }
+
+/* h1{
+	font-size: 3vmax;
+}
+
+h2{
+	font-size: 2vmax;
+}
+
+h3 {
+	font-style:italic;
+	font-weight:bold;
+	font-size: 20px;
+	text-decoration: underline;
+} */
+
+#programming>ol:nth-child(1){
+	margin-left:0; 
+	width:5px; 
+	background-image:url(https://raw.githubusercontent.com/github/explore/f3e22f0dca2be955676bc70d6214b95b13354ee8/topics/c/c.png);
+}
+
+.horz_bar>li{
+	float:left;
+	margin-right:40px;
+	list-style-type:none;
+	font-weight:bold;
+}
+
 
 a:visited{
 	color:purple;
