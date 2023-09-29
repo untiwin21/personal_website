@@ -1,44 +1,42 @@
-#site_area{
-	margin-left: 100px;
-}
-
-#contents{
+body{
 	
 }
 
-#main{
-	margin-left:200px;
+p{
+	font-style:normal;
+	font-size:20px;
+	font-weight:normal;
 }
 
-/* h1{
-	font-size: 3vmax;
-}
-
-h2{
-	font-size: 2vmax;
-}
-
-h3 {
-	font-style:italic;
-	font-weight:bold;
-	font-size: 20px;
-	text-decoration: underline;
-} */
-
-#programming>ol:nth-child(1){
-	margin-left:0; 
-	width:5px; 
-	background-image:url(https://raw.githubusercontent.com/github/explore/f3e22f0dca2be955676bc70d6214b95b13354ee8/topics/c/c.png);
-}
-
-.horz_bar>li{
-	float:left;
-	margin-right:40px;
-	list-style-type:none;
-	font-weight:bold;
+ul, ol{
+	list-style:none;	
 }
 
 
-a:visited{
-	color:purple;
+/* intro 페이지 구획*/
+#intro{
+	position:relative;
+	width:100vw;
+	height:20vh;
+	background-color:rgba(20,20,20,0.5);
+	opacity=0.3;
+	z-index:2;
+}
+
+/* intro 본문*/
+#intro>div{
+	position:absolute;
+	top:40%;
+	left:35%;
+	font-size: 30px;
+	font-weight: bold;
+	font-style: fantasy;
+	color: #edf0d3;
+	text-align: center;
+}
+
+.night_photo{
+	position:absolute;
+	width: 100vw;
+	z-index:1;
 }
