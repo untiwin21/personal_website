@@ -38,6 +38,6 @@ ul, ol{
 	position:absolute;
 	width: 100vw;
 	z-index: 1;
-	filter:brightness(30%);
+	filter:brightness(35%);
 }
 
