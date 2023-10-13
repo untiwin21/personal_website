@@ -23,6 +23,13 @@ h1{
 	font-size:35px;
 	color:white;
 }
+
+H3{
+	font-style:bold;
+	font-size:15px;
+	font-weight:normal;
+	color:white;
+}
 /*상단바 영역*/
 .container{
 	position:absolute;
@@ -109,7 +116,7 @@ main{
 	width:calc(100vw-200px);
 	height:100vh;
 	padding-left:280px;
-	padding-top:10%;
+	padding-top:5%;
 	background-color:black;
 	border-bottom:1px solid lavender;
 }
@@ -140,28 +147,33 @@ main{
 	width:100%;
 }
 
+#skills{
+	display: flex;
+	flex-direction:row;
+}
+#skills>div{
+	margin:5%;
+	width:40%;
+}
+
 .skill{
 	border:1px solid purple;
 	display:flex;
 	flex-direction:column;
 	padding:0 1% 1% 1%;
 	margin:0 5% 5% 5%;
-	width:50%;
+	width:100%;
 }
 
-/* .tool>ol>li:nth-child(1){
-	background-image:url("");
-	background-repeat:no-repeat;
-	background-size:contain;
-	width:100%;
-	display:inline;
+#workshop{
+	display: flex;
+	flex-wrap:wrap;
 }
-.tool>ol>li:nth-child(2){
-	background-image:url("./src/icons8-visual-studio-code-2019.svg");
-	background-repeat:no-repeat;
-	background-size:contain;
-	width:100%;
-	display:inline;
-}
- */
 
+#workshop>div{
+	border:1px solid gray;
+	width:300px;
+	height:200px;
+	margin:3%;
+
+}
