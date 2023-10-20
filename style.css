@@ -177,11 +177,20 @@ main{
 	width:100%;
 }
 
+
 .skill>h2{
 	border-left-style:solid;
 	border-left-color:purple;
 	border-left-width:3px;
 	padding-left:5px;
+}
+
+.skill li{
+	display:inline-block;
+	border:1px solid #42f5dd;
+	border-radius:5%;
+	padding:1%;
+	color:#42f5dd;
 }
 
 /* workshop project 배치 */
@@ -217,5 +226,5 @@ main{
 	background-color:lavender;
 	padding:1%;
 	margin:3%;
-
+	border-radius:15%;
 }
