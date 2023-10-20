@@ -183,15 +183,39 @@ main{
 	border-left-width:3px;
 	padding-left:5px;
 }
-#workshop{
-	display: flex;
+
+/* workshop project 배치 */
+#workshop>div:nth-child(1){
+	display:flex;
 	flex-wrap:wrap;
 }
 
-#workshop>div{
+/* project 칸 꾸미기 */
+.project{
 	border:1px solid gray;
-	width:300px;
+	border-style:outset;
+	width:25%;
 	height:200px;
+	margin:3%;
+	padding:1%;
+
+}
+.project>h3{
+	padding-bottom:5%;
+	border:0.5px #FF00FF;
+	
+	border-bottom-style:solid;
+}
+
+#workshop>div:nth-child(2){
+	display:flex;
+	flex-wrap:wrap;
+	padding:0;
+}
+
+#more_project{
+	background-color:lavender;
+	padding:1%;
 	margin:3%;
 
 }
