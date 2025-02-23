@@ -37,7 +37,6 @@ li{
 	color:white;
 }
 
-
 /*상단바 영역*/
 .container{
 	position:absolute;
@@ -84,7 +83,6 @@ li{
 	font-weight: bold;
 	font-style: fantasy;
 }
-
 
 .intro>img{
 	position:absolute;
@@ -177,7 +175,6 @@ main{
 	width:100%;
 }
 
-
 .skill>h2{
 	border-left-style:solid;
 	border-left-color:purple;
@@ -207,12 +204,10 @@ main{
 	height:200px;
 	margin:3%;
 	padding:1%;
-
 }
 .project>h3{
 	padding-bottom:5%;
 	border:0.5px #FF00FF;
-	
 	border-bottom-style:solid;
 }
 
@@ -228,3 +223,24 @@ main{
 	margin:3%;
 	border-radius:15%;
 }
+
+/* html, body에 스크롤 스냅을 적용 */
+html, body {
+	scroll-behavior: smooth;      /* 부드러운 스크롤 애니메이션 */
+	scroll-snap-type: y mandatory;  /* y축 스냅 타입, 반드시 스냅함 */
+	overflow-y: scroll;
+	height: 100%;
+	margin: 0;
+  }
+  
+  /* 메인 컨테이너(스크롤 영역) */
+  main {
+	scroll-snap-type: y mandatory;
+  }
+  
+  /* 각 섹션은 뷰포트 높이 만큼이고, 스냅 정렬 */
+  main > section {
+	scroll-snap-align: start;  /* 섹션 시작 부분에 맞춰 스냅 */
+	height: 100vh;             /* 각 섹션의 높이를 뷰포트 전체 높이로 설정 */
+  }
+  
