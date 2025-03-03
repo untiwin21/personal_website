@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Research() {
+function Study() {
   return (
     <main>
-      <section className="page" id="papers">
+      <section className="page" id="studies">
         <div>
-          <section className="research">
+          <section className="study">
             <h3>Problem Solving</h3>
           </section>
-          <section className="research">
+          <section className="study">
             <h3>Web </h3>
           </section>
         </div>
@@ -17,4 +17,4 @@ function Research() {
   );
 }
 
-export default Research;
+export default Study;

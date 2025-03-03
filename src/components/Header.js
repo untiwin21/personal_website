@@ -17,11 +17,15 @@ function Header() {
           <Link to="/project">Projects</Link>
         </div>
         <div>
-          <Link to="/contact">Contact</Link>
-        </div>
-        <div>
           <Link to="/research">Research</Link>
         </div>
+        <div>
+          <Link to="/study">Study</Link>
+        </div>
+        <div>
+          <Link to="/contact">Contact</Link>
+        </div>
+        
       </section>
     </header>
   );

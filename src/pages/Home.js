@@ -1,7 +1,7 @@
 // src/pages/Home.js
 import React from 'react';
 import MyPhoto from '../imgs/my_photo.jpg';
-import Backgroundimg from '../imgs/night.jpg';
+import Backgroundimg from '../imgs/night.webp';
 function Home() {
   return (
     <main>
@@ -18,8 +18,6 @@ function Home() {
         </div>
         <img src= {Backgroundimg} alt="Background" />
       </section>
-
-      {/* 목차는 필요하다면 Home 페이지에 포함하거나 Header 등 공통 컴포넌트에 넣을 수 있습니다. 여기서는 생략 */}
 
 
       <section className="page" id="intro_msg">

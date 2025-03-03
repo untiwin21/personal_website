@@ -7,7 +7,7 @@ function Project() {
       <section className="page" id="project">
         <div>
           <section className="project">
-            <h3>Four Wheeled Independently Driven Autonomous Mobile Robot</h3>
+            <h3>Autonomous Driving Mobile Robot with independent wheels</h3>
           </section>
           <section className="project">
             <h3>Robot Arm</h3>
