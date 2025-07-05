@@ -1,14 +1,139 @@
 /* src/components/Header.css */
 header {
-    /* 기본 Header 스타일 */
-    background-color: #222;
-    color: white;
-    padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.headcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: rgba(18, 18, 18, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+  flex: 0 0 auto;
+}
+
+#logo h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+#logo h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #6C63FF;
+  transition: width 0.3s ease;
+}
+
+#logo:hover h2::after {
+  width: 100%;
+}
+
+.navigate {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navigate div {
+  position: relative;
+}
+
+.navigate a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navigate a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #42f5dd;
+  transition: width 0.3s ease;
+}
+
+.navigate a:hover {
+  color: #fff;
+}
+
+.navigate a:hover::after {
+  width: 100%;
+}
+
+/* Active link styling */
+.navigate a.active {
+  color: #42f5dd;
+}
+
+.navigate a.active::after {
+  width: 100%;
+  background-color: #42f5dd;
+}
+
+/* Mobile menu button */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .headcontainer {
+    padding: 1rem;
   }
   
-  header a {
-    color: lightblue;
-    text-decoration: none;
-    margin: 0 10px;
+  .menu-button {
+    display: block;
   }
   
+  .navigate {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.95);
+    flex-direction: column;
+    padding: 1rem 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.4s ease-out;
+  }
+  
+  .navigate.open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  .navigate div {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+}
