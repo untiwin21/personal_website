@@ -1,0 +1,51 @@
+/* src/components/ImageSlideshow.css */
+.slideshow-container {
+    position: relative;
+    width: 450px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .slideshow-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .slideshow-container img.active {
+    opacity: 1;
+  }
+
+  .slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .slideshow-container:hover .slideshow-arrow {
+    opacity: 1;
+  }
+
+  .slideshow-arrow.left {
+    left: 10px;
+  }
+
+    .slideshow-arrow.right {
+    right: 10px;
+    }
+  

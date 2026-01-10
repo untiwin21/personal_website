@@ -1,9 +1,14 @@
 // src/pages/Home.js
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import MyPhoto from '../imgs/my_photo.jpg';
 import Backgroundimg from '../imgs/background.jpg';
+import ImageSlideshow from '../components/ImageSlideshow';
+import SkkuMe from '../imgs/SKKU_ME.png';
+import RoboticsInnovatory from '../imgs/Robotics Innovatory.png';
 
 function Home() {
+  const [modalContent, setModalContent] = useState(null);
+
   // Add scroll animation effect
   useEffect(() => {
     const observerOptions = {
@@ -28,6 +33,37 @@ function Home() {
     };
   }, []);
 
+  const openModal = (content) => {
+    setModalContent(content);
+  };
+
+  const closeModal = () => {
+    setModalContent(null);
+  };
+
+  const educationData = {
+    skku: {
+      image: SkkuMe,
+      title: 'Sungkyunkwan University (SKKU)',
+      details: (
+        <>
+          <p><strong>Bachelor of Science in Mechanical Engineering</strong></p>
+          <p>Mar 2021 - Present</p>
+        </>
+      ),
+    },
+    innovatory: {
+      image: RoboticsInnovatory,
+      title: 'SKKU Innovatory',
+      details: (
+        <>
+          <p><strong>Member of the Innovatory</strong></p>
+          <p>Sep 2023 - Present</p>
+        </>
+      ),
+    },
+  };
+
   return (
     <main>
       {/* Hero Section */}
@@ -43,66 +79,63 @@ function Home() {
       {/* About Me Section */}
       <section className="page" id="intro_msg">
         <h1 className="animate">About Me</h1>
-        <div className="animate">
-          <div id="my_photo">
-            <img src={MyPhoto} alt="Choi Taewoong" />
-          </div>
-          <div className="about-content">
-            <h2>Choi Taewoong</h2>
-            <p>
-              I am a third-year student in the Department of Mechanical Engineering 
-              at Sungkyunkwan University, aspiring to be a robotics engineer. My passion 
-              lies in creating intelligent systems that can interact with the physical world.
-            </p>
-            <p>
-              With a strong foundation in mechanical principles and a growing expertise in 
-              programming and control systems, I aim to develop innovative solutions at the 
-              intersection of hardware and software.
-            </p>
-            <div className="social-links">
-              <a href="#" className="social-icon github">GitHub</a>
-              <a href="#" className="social-icon linkedin">LinkedIn</a>
-              <a href="#" className="social-icon email">Email</a>
+        <div className="about-me-grid" style={{gap: '5rem'}}>
+          <div className="animate about-content-container">
+            <div id="my_photo">
+              <img src={MyPhoto} alt="Choi Taewoong" />
             </div>
+            <div className="about-content">
+              <h2>Choi Taewoong</h2>
+              <p>
+                I am a third-year student in the Department of Mechanical Engineering 
+                at Sungkyunkwan University, aspiring to be a robotics engineer. My passion 
+                lies in creating intelligent systems that can interact with the physical world.
+              </p>
+              <p>
+                With a strong foundation in mechanical principles and a growing expertise in 
+                programming and control systems, I aim to develop innovative solutions at the 
+                intersection of hardware and software.
+              </p>
+              <div className="social-links">
+                <a href="#" className="social-icon github">GitHub</a>
+                <a href="#" className="social-icon linkedin">LinkedIn</a>
+                <a href="#" className="social-icon email">Email</a>
+              </div>
+            </div>
+          </div>
+          <div className="animate">
+            <ImageSlideshow />
           </div>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="page" id="Timeline">
-        <h1 className="animate">Career Journey</h1>
-        <div className="timeline animate">
-          <div className="timeline-item">
-            <div className="timeline-date">2022 - Present</div>
-            <div className="timeline-content">
-              <h3>Mechanical Engineering</h3>
-              <p>Sungkyunkwan University</p>
-              <p>Focusing on robotics and control systems</p>
-            </div>
+      {/* Education Section */}
+      <section className="page" id="education">
+        <h1 className="animate">Education</h1>
+        <div className="education-container page-content">
+          <div className="education-card" onClick={() => openModal(educationData.skku)}>
+            <img src={educationData.skku.image} alt="SKKU" />
           </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2023</div>
-            <div className="timeline-content">
-              <h3>Research Assistant</h3>
-              <p>Robotics Laboratory</p>
-              <p>Worked on autonomous navigation systems</p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2022</div>
-            <div className="timeline-content">
-              <h3>Engineering Workshop</h3>
-              <p>Summer Internship</p>
-              <p>Developed 3D modeling skills and prototyping experience</p>
-            </div>
+          <div className="education-card" onClick={() => openModal(educationData.innovatory)}>
+            <img src={educationData.innovatory.image} alt="SKKU Innovatory" />
           </div>
         </div>
       </section>
+
+      {modalContent && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeModal}>✕</button>
+            <h2>{modalContent.title}</h2>
+            {modalContent.details}
+          </div>
+        </div>
+      )}
 
       {/* Skills Section */}
       <section className="page" id="skills">
         <h1 className="animate">Skills & Expertise</h1>
-        <div className="skills-container">
+        <div className="skills-container page-content">
           <div className="skill animate">
             <h2>Mechanical Engineering</h2>
             <p>Specialized in designing mechanical systems with a focus on robotics applications</p>
@@ -144,10 +177,12 @@ function Home() {
             </ol>
           </div>
         </div>
-        
-        <div className="featured-projects animate">
-          <h2>Featured Projects</h2>
-          <div className="project-cards">
+      </section>
+
+      {/* Projects Section */}
+      <section className="page" id="projects">
+        <h1 className="animate">Projects</h1>
+        <div className="project-cards animate page-content">
             <div className="project-card">
               <div className="project-image"></div>
               <h3>Autonomous Robot</h3>
@@ -161,10 +196,10 @@ function Home() {
               <a href="/project" className="project-link">View Details</a>
             </div>
           </div>
-        </div>
       </section>
     </main>
   );
 }
 
 export default Home;
+
