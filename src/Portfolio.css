@@ -722,6 +722,7 @@
 }
 
 .btn-details {
+  display: inline-block;
   background: none;
   border: 1px solid var(--border);
   color: var(--accent);
@@ -734,33 +735,12 @@
   align-self: flex-start;
   font-family: 'Inter', sans-serif;
   letter-spacing: 0.3px;
+  text-decoration: none;
 }
 
 .btn-details:hover {
   background: var(--accent-glow);
   border-color: var(--accent);
-}
-
-.project-details-list {
-  margin-top: 1rem;
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-}
-
-.project-details-list li {
-  font-size: 0.85rem;
-  color: var(--text-sec);
-  line-height: 1.7;
-  padding: 0.3rem 0 0.3rem 1rem;
-  position: relative;
-}
-
-.project-details-list li::before {
-  content: '›';
-  position: absolute;
-  left: 0;
-  color: var(--teal);
-  font-weight: 700;
 }
 
 /* ══════════════ SKILLS ══════════════ */

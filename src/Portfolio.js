@@ -187,7 +187,6 @@ const TypingText = ({ texts }) => {
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
-  const [expandedProject, setExpandedProject] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   /* ── active section tracking ── */
@@ -236,12 +235,7 @@ const Portfolio = () => {
       period: '2024 - Present',
       svg: <SensorFusionSVG />,
       summary: 'Developed a robust navigation system for mobile robots in indoor environments by fusing LiDAR and Radar data through a Dynamic Occupancy Grid Map (DOGM).',
-      description: [
-        'Built a Dynamic Occupancy Grid Map (DOGM) using a particle filter that fuses LiDAR position and Radar velocity measurements to classify each cell as dynamic/static.',
-        'Extended the DOGM to a Double-Likelihood framework with two overlapping radars (120° FoV each), enabling full 360° velocity-aware obstacle tracking.',
-        'Designed a Spatiotemporal Graph Attention Network (GAT) to learn adaptive noise models for radar measurements, addressing lateral-motion misclassification.',
-        'Implemented a spatiotemporal loss function combining spatial, intensity, and temporal terms to predict per-measurement uncertainty (σ) for DOGM fusion.',
-      ],
+      notionLink: 'https://power-botany-f0c.notion.site/GAT-DOGM-312a18da85eb80db92bae66c8818ab61',
       tools: ['Python', 'PyTorch', 'PyTorch Geometric', 'ROS2', 'LiDAR (Hokuyo UST10)', 'Radar (TI IWR6843)'],
     },
     {
@@ -251,12 +245,7 @@ const Portfolio = () => {
       period: '2024',
       svg: <BartenderArmSVG />,
       summary: 'Designed and built a 4-axis robot arm from scratch for automated bartending tasks, integrating 3D-printed structural components with ROS2 MoveIt! motion planning.',
-      description: [
-        'Designed all mechanical components using SolidWorks and fabricated them via 3D printing (FDM).',
-        'Integrated 4× Dynamixel XL430-W250 servo motors for precise joint control.',
-        'Configured the robot URDF and MoveIt! package on ROS2 for collision-aware motion planning.',
-        'Implemented pick-and-place tasks for pouring and serving beverages autonomously.',
-      ],
+      notionLink: 'https://power-botany-f0c.notion.site/1a4a18da85eb8030ab86fdb175ac5f58',
       tools: ['Python', 'ROS2', 'MoveIt!', 'Dynamixel XL430', 'SolidWorks', '3D Printing (FDM)'],
     },
     {
@@ -266,13 +255,7 @@ const Portfolio = () => {
       period: 'Summer 2025',
       svg: <AllWheelRobotSVG />,
       summary: 'Established a full ROS-based autonomous driving pipeline for an all-wheel steering robot featuring 8 independent motors, from URDF modeling to Gazebo simulation and real-world deployment.',
-      description: [
-        'Generated a URDF from SolidWorks CAD, enabling TF relationships and Gazebo integration where none existed.',
-        'Derived and implemented Ackermann steering kinematics for the 4-wheel independent steering system, replacing macro-style low-level commands with high-level Twist inputs.',
-        'Built a Gazebo simulation environment with joystick driving, forward/backward, diagonal, and turn modes verified.',
-        'Deployed the system on the real robot and validated kinematics-based driving modes against baseline low-level control.',
-        'Proposed future integration with the ROS Navigation Stack (move_base) and LiDAR obstacle detection.',
-      ],
+      notionLink: 'https://power-botany-f0c.notion.site/Autonomous-All-Wheel-Steering-Robot-312a18da85eb8064b846ff48c9d10468',
       tools: ['Python', 'C++', 'ROS', 'Gazebo', 'RViz', 'SolidWorks', 'Ackermann Kinematics'],
     },
   ];
@@ -500,7 +483,7 @@ const Portfolio = () => {
               {projects.map((proj, idx) => (
                 <div
                   key={proj.id}
-                  className={`project-card fade-in ${expandedProject === proj.id ? 'expanded' : ''}`}
+                  className="project-card fade-in"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="project-illustration">
@@ -518,19 +501,15 @@ const Portfolio = () => {
                       {proj.tools.map(t => <span key={t} className="tool-tag">{t}</span>)}
                     </div>
 
-                    <button
-                      className="btn-details"
-                      onClick={() => setExpandedProject(expandedProject === proj.id ? null : proj.id)}
-                    >
-                      {expandedProject === proj.id ? '▲ Hide Details' : '▼ Show Details'}
-                    </button>
-
-                    {expandedProject === proj.id && (
-                      <ul className="project-details-list">
-                        {proj.description.map((d, i) => (
-                          <li key={i}>{d}</li>
-                        ))}
-                      </ul>
+                    {proj.notionLink && (
+                      <a
+                        href={proj.notionLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-details"
+                      >
+                        View Details →
+                      </a>
                     )}
                   </div>
                 </div>
