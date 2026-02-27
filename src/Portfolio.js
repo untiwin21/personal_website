@@ -424,50 +424,27 @@ const Portfolio = () => {
         <section id="experience" className="section section-alt">
           <div className="section-inner">
             <h2 className="section-title fade-in">Experience</h2>
-            <div className="timeline fade-in">
-              <div className="timeline-item">
-                <div className="timeline-logo">
+            <div className="edu-grid fade-in">
+              <div className="edu-card">
+                <div className="edu-logo-wrap">
                   <div className="logo-placeholder logo-ri">RI</div>
                 </div>
-                <div className="timeline-body">
-                  <div className="timeline-header">
-                    <div>
-                      <h3 className="timeline-org">SKKU Robotics Innovatory</h3>
-                      <p className="timeline-role">Undergraduate Researcher</p>
+                <div className="edu-info">
+                  <h3 className="edu-school">SKKU Robotics Innovatory</h3>
+                  <p className="edu-location">📍 Suwon, Republic of Korea</p>
+                  <p className="edu-degree">
+                    <strong>Undergraduate Researcher</strong>
+                  </p>
+                  <p className="edu-period">Sep 2023 – Present</p>
+                  <div className="edu-courses">
+                    <p className="courses-label">Focus Areas</p>
+                    <div className="skill-tags">
+                      {[
+                        'Sensor Fusion', 'Dynamic Occupancy Grids',
+                        'Graph Neural Networks', 'Mobile Robotics',
+                        'LiDAR / Radar Fusion',
+                      ].map(c => <span key={c} className="skill-tag">{c}</span>)}
                     </div>
-                    <span className="timeline-period">Sep 2023 – Present</span>
-                  </div>
-                  <p className="timeline-location">📍 Suwon, Republic of Korea</p>
-                  <ul className="timeline-details">
-                    <li>
-                      Conducting research on <strong>Uncertainty-Aware Sensor Fusion</strong> for
-                      reliable mobile robot navigation in indoor dynamic environments.
-                    </li>
-                    <li>
-                      Developing a <strong>Dynamic Occupancy Grid Map (DOGM)</strong> framework
-                      that fuses LiDAR position data and Radar velocity measurements via
-                      a particle filter, enabling dynamic/static cell classification.
-                    </li>
-                    <li>
-                      Extended DOGM to a <strong>Double-Likelihood framework</strong> using two
-                      overlapping Radar sensors to overcome the 120° FoV limitation and
-                      improve velocity estimation accuracy.
-                    </li>
-                    <li>
-                      Designing a <strong>Spatiotemporal Graph Attention Network (GAT)</strong>
-                      to learn adaptive, environment-aware noise models for Radar measurements,
-                      addressing the lateral-motion misclassification problem.
-                    </li>
-                    <li>
-                      Formulated a novel <strong>spatiotemporal loss function</strong> combining
-                      spatial, intensity, and temporal terms to predict per-measurement uncertainty
-                      values (σ) used as dynamic weights in the fusion pipeline.
-                    </li>
-                  </ul>
-                  <div className="timeline-tools">
-                    {['Python', 'PyTorch', 'PyTorch Geometric', 'ROS2', 'LiDAR', 'Radar', 'GAT'].map(t => (
-                      <span key={t} className="tool-tag">{t}</span>
-                    ))}
                   </div>
                 </div>
               </div>
@@ -570,29 +547,6 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              <div className="edu-card">
-                <div className="edu-logo-wrap">
-                  <div className="logo-placeholder logo-ri">RI</div>
-                </div>
-                <div className="edu-info">
-                  <h3 className="edu-school">SKKU Robotics Innovatory</h3>
-                  <p className="edu-location">📍 Suwon, Republic of Korea</p>
-                  <p className="edu-degree">
-                    <strong>Undergraduate Researcher</strong>
-                  </p>
-                  <p className="edu-period">Sep 2023 – Present</p>
-                  <div className="edu-courses">
-                    <p className="courses-label">Focus Areas</p>
-                    <div className="skill-tags">
-                      {[
-                        'Sensor Fusion', 'Dynamic Occupancy Grids',
-                        'Graph Neural Networks', 'Mobile Robotics',
-                        'LiDAR / Radar Fusion',
-                      ].map(c => <span key={c} className="skill-tag">{c}</span>)}
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
