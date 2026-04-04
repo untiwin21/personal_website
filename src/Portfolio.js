@@ -188,6 +188,19 @@ const TypingText = ({ texts }) => {
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  /* ── modal: close on Escape + lock scroll ── */
+  useEffect(() => {
+    const handleEsc = (e) => { if (e.key === 'Escape') setSelectedProject(null); };
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleEsc);
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', handleEsc); };
+  }, [selectedProject]);
 
   /* ── active section tracking ── */
   useEffect(() => {
@@ -230,33 +243,111 @@ const Portfolio = () => {
   const projects = [
     {
       id: 'sensor-fusion',
-      title: 'Uncertainty-Aware Sensor Fusion for Navigation',
-      subtitle: 'SKKU Robotics Innovatory Research',
-      period: '2024 - Present',
+      title: 'Uncertainty-Aware Sensor Fusion for Reliable Navigation',
+      period: '2025.08 - 2026.03',
+      org: '2025-2 ~ 2026 Winter Co-op',
       svg: <SensorFusionSVG />,
-      summary: 'Developed a robust navigation system for mobile robots in indoor environments by fusing LiDAR and Radar data through a Dynamic Occupancy Grid Map (DOGM).',
-      notionLink: 'https://power-botany-f0c.notion.site/GAT-DOGM-312a18da85eb80db92bae66c8818ab61',
-      tools: ['Python', 'PyTorch', 'PyTorch Geometric', 'ROS2', 'LiDAR (Hokuyo UST10)', 'Radar (TI IWR6843)'],
+      tools: ['Sensor Fusion', 'Deep Learning', 'ROS 1'],
+      github: '',
+      sections: [
+        {
+          title: 'Project Summary',
+          icon: '\uD83D\uDCC3',
+          images: [
+            '/imgs/projects/sensor-fusion/sf_summary1.png',
+            '/imgs/projects/sensor-fusion/sf_summary2.png',
+          ],
+        },
+        {
+          title: 'My Contribution',
+          icon: '\uD83D\uDD90\uFE0F',
+          images: ['/imgs/projects/sensor-fusion/sf_contribution.png'],
+        },
+        {
+          title: 'Project Details',
+          icon: '\uD83D\uDCDD',
+          images: [
+            '/imgs/projects/sensor-fusion/sf_detail1.png',
+            '/imgs/projects/sensor-fusion/sf_detail2.png',
+          ],
+        },
+      ],
     },
     {
       id: 'bartender',
       title: 'Bartender Robot Arm',
-      subtitle: 'Personal Project',
-      period: '2024',
+      period: '2025.08 - 2025.11',
+      org: 'SKKU Robotics Club (Team Leader)',
       svg: <BartenderArmSVG />,
-      summary: 'Designed and built a 4-axis robot arm from scratch for automated bartending tasks, integrating 3D-printed structural components with ROS2 MoveIt! motion planning.',
-      notionLink: 'https://power-botany-f0c.notion.site/1a4a18da85eb8030ab86fdb175ac5f58',
-      tools: ['Python', 'ROS2', 'MoveIt!', 'Dynamixel XL430', 'SolidWorks', '3D Printing (FDM)'],
+      tools: ['3D Modeling', 'ROS2 MoveIt!'],
+      github: 'https://github.com/SWE3022-42-team9',
+      videoUrl: 'https://www.youtube.com/shorts/IX1vHyPMZBo',
+      sections: [
+        {
+          title: 'Project Summary',
+          icon: '\uD83D\uDCC3',
+          images: ['/imgs/projects/bartender/bartender_summary.png'],
+        },
+        {
+          title: 'My Contribution',
+          icon: '\uD83D\uDD90\uFE0F',
+          images: ['/imgs/projects/bartender/bartender_contribution.png'],
+        },
+        {
+          title: 'Project Details',
+          icon: '\uD83D\uDCDD',
+          images: [
+            '/imgs/projects/bartender/bartender_detail1.png',
+            '/imgs/projects/bartender/bartender_detail2.png',
+            '/imgs/projects/bartender/bartender_detail3.png',
+          ],
+        },
+      ],
     },
     {
       id: 'aws-robot',
-      title: 'Autonomous All-Wheel Steering Robot',
-      subtitle: 'SKKU URP (Summer 2025)',
-      period: 'Summer 2025',
+      title: 'Development of Driving Mode of 4WS Mobile Robot',
+      period: '2022.09 - 2023.02',
+      org: '2025 Summer URP',
       svg: <AllWheelRobotSVG />,
-      summary: 'Established a full ROS-based autonomous driving pipeline for an all-wheel steering robot featuring 8 independent motors, from URDF modeling to Gazebo simulation and real-world deployment.',
-      notionLink: 'https://power-botany-f0c.notion.site/Autonomous-All-Wheel-Steering-Robot-312a18da85eb8064b846ff48c9d10468',
-      tools: ['Python', 'C++', 'ROS', 'Gazebo', 'RViz', 'SolidWorks', 'Ackermann Kinematics'],
+      tools: ['ROS 1'],
+      github: '',
+      sections: [
+        {
+          title: 'Previous Work & Limitation',
+          icon: '\uD83D\uDCC3',
+          images: [
+            '/imgs/projects/4ws-robot/4ws_prev1.png',
+            '/imgs/projects/4ws-robot/4ws_prev2.png',
+            '/imgs/projects/4ws-robot/4ws_prev3.png',
+          ],
+          text: '4WS(4-Wheel Steering) mobile robot with 180-degree independent steering on all 4 wheels. Joystick-based manual control (diagonal/crab/spin/forward-reverse) was already implemented.',
+        },
+        {
+          title: 'Project Goals',
+          icon: '\uD83C\uDFAF',
+          text: '1. Develop left/right turn driving mode considering kinematics\n2. Generate URDF from existing Fusion 360 model & build Gazebo environment\n3. Driving test in Gazebo simulation\n4. Real-world driving test',
+          images: ['/imgs/projects/4ws-robot/4ws_goal.png'],
+        },
+        {
+          title: 'Driving Simulation',
+          icon: '\uD83D\uDE97',
+          text: 'Simulation flow: Joystick \u2192 Twist mapping \u2192 Ackermann Steering calculation \u2192 Per-motor angular velocity \u2192 Gazebo & RViz simulation',
+          images: [
+            '/imgs/projects/4ws-robot/4ws_sim1.png',
+            '/imgs/projects/4ws-robot/4ws_sim2.png',
+            '/imgs/projects/4ws-robot/4ws_sim3.png',
+          ],
+        },
+        {
+          title: 'Improvement',
+          icon: '\uD83D\uDE80',
+          images: [
+            '/imgs/projects/4ws-robot/4ws_improve1.png',
+            '/imgs/projects/4ws-robot/4ws_improve2.png',
+          ],
+        },
+      ],
     },
   ];
 
@@ -328,12 +419,12 @@ const Portfolio = () => {
         </nav>
 
         <div className="sidebar-social">
-          <a href="https://github.com/" target="_blank" rel="noreferrer" className="social-btn" title="GitHub">
+          <a href="https://github.com/untiwin21" target="_blank" rel="noreferrer" className="social-btn" title="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
             </svg>
           </a>
-          <a href="mailto:taewoong@skku.edu" className="social-btn" title="Email">
+          <a href="mailto:taewoong1377@g.skku.edu" className="social-btn" title="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
               width="20" height="20">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -435,7 +526,7 @@ const Portfolio = () => {
                   <p className="edu-degree">
                     <strong>Undergraduate Researcher</strong>
                   </p>
-                  <p className="edu-period">Sep 2023 – Present</p>
+                  <p className="edu-period">Jan 2025 – Mar 2026</p>
                   <div className="edu-courses">
                     <p className="courses-label">Focus Areas</p>
                     <div className="skill-tags">
@@ -462,38 +553,91 @@ const Portfolio = () => {
                   key={proj.id}
                   className="project-card fade-in"
                   style={{ animationDelay: `${idx * 0.1}s` }}
+                  onClick={() => setSelectedProject(proj)}
                 >
                   <div className="project-illustration">
                     {proj.svg}
                   </div>
                   <div className="project-info">
-                    <div className="project-header">
-                      <div>
-                        <h3 className="project-title">{proj.title}</h3>
-                        <p className="project-subtitle">{proj.subtitle} · {proj.period}</p>
-                      </div>
-                    </div>
-                    <p className="project-summary">{proj.summary}</p>
-                    <div className="project-tools">
-                      {proj.tools.map(t => <span key={t} className="tool-tag">{t}</span>)}
-                    </div>
-
-                    {proj.notionLink && (
-                      <a
-                        href={proj.notionLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn-details"
-                      >
-                        View Details →
-                      </a>
-                    )}
+                    <h3 className="project-title">{proj.title}</h3>
+                    <p className="project-meta">
+                      {proj.period}<br/>
+                      <span>{proj.org}</span>
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* ── PROJECT DETAIL MODAL ── */}
+        {selectedProject && (
+          <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <div className="modal-close">
+                <button className="modal-close-btn" onClick={() => setSelectedProject(null)}>
+                  ✕
+                </button>
+              </div>
+              <div className="modal-header">
+                <h2 className="modal-title">{selectedProject.title}</h2>
+                <p className="modal-subtitle">
+                  {selectedProject.period} · {selectedProject.org}
+                </p>
+                <div className="modal-tools">
+                  {selectedProject.tools.map(t => <span key={t} className="tool-tag">{t}</span>)}
+                </div>
+                {selectedProject.github && (
+                  <a href={selectedProject.github} target="_blank" rel="noreferrer" className="modal-github">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    GitHub
+                  </a>
+                )}
+              </div>
+
+              {selectedProject.videoUrl && (
+                <div className="modal-section">
+                  <h3 className="modal-section-title">Demo Video</h3>
+                  <div className="modal-section-content">
+                    <iframe
+                      className="modal-video"
+                      src={selectedProject.videoUrl.replace('shorts/', 'embed/')}
+                      title="Demo video"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              )}
+
+              {selectedProject.sections.map((section, i) => (
+                <div key={i} className="modal-section">
+                  <h3 className="modal-section-title">
+                    {section.icon} {section.title}
+                  </h3>
+                  <div className="modal-section-content">
+                    {section.text && section.text.split('\n').map((line, j) => (
+                      <p key={j}>{line}</p>
+                    ))}
+                    {section.images && section.images.map((img, j) => (
+                      <img
+                        key={j}
+                        src={img}
+                        alt={`${section.title} ${j + 1}`}
+                        loading="lazy"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── SKILLS ── */}
         <section id="skills" className="section section-alt">
@@ -531,9 +675,9 @@ const Portfolio = () => {
                   <h3 className="edu-school">Sungkyunkwan University</h3>
                   <p className="edu-location">📍 Suwon, Republic of Korea</p>
                   <p className="edu-degree">
-                    <strong>B.S. in Mechanical Engineering</strong>
+                    <strong>B.S. in Mechanical Engineering</strong> · GPA: 3.67 / 4.50
                   </p>
-                  <p className="edu-period">Mar 2021 – Present</p>
+                  <p className="edu-period">Feb 2021 – Present</p>
                   <div className="edu-courses">
                     <p className="courses-label">Relevant Coursework</p>
                     <div className="skill-tags">
@@ -541,6 +685,29 @@ const Portfolio = () => {
                         'Robotics Engineering', 'Control Systems', 'Machine Learning',
                         'Dynamics', 'Mechatronics', 'Computer Vision',
                         'Reinforcement Learning', 'System Analysis',
+                      ].map(c => <span key={c} className="skill-tag">{c}</span>)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="edu-card">
+                <div className="edu-logo-wrap">
+                  <div className="logo-placeholder logo-skku">LF</div>
+                </div>
+                <div className="edu-info">
+                  <h3 className="edu-school">SKKU Learning Factory</h3>
+                  <p className="edu-location">Sungkyunkwan University</p>
+                  <p className="edu-degree">
+                    <strong>3D Printing & Laser Cutting Manager</strong>
+                  </p>
+                  <p className="edu-period">Dec 2025 – Present</p>
+                  <div className="edu-courses">
+                    <p className="courses-label">Responsibilities</p>
+                    <div className="skill-tags">
+                      {[
+                        '3D Printing Education/Management',
+                        'Laser Cutter Management',
                       ].map(c => <span key={c} className="skill-tag">{c}</span>)}
                     </div>
                   </div>
@@ -562,7 +729,7 @@ const Portfolio = () => {
                 Feel free to reach out!
               </p>
               <div className="contact-cards">
-                <a href="mailto:taewoong@skku.edu" className="contact-card">
+                <a href="mailto:taewoong1377@g.skku.edu" className="contact-card">
                   <div className="contact-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       strokeWidth="2" width="28" height="28">
@@ -572,11 +739,12 @@ const Portfolio = () => {
                   </div>
                   <div>
                     <p className="contact-label">Email</p>
-                    <p className="contact-value">taewoong@skku.edu</p>
+                    <p className="contact-value">taewoong1377@g.skku.edu</p>
+                    <p className="contact-value" style={{fontSize:'0.82rem',color:'var(--text-muted)'}}>twws137702@gmail.com</p>
                   </div>
                 </a>
 
-                <a href="https://github.com/" target="_blank" rel="noreferrer"
+                <a href="https://github.com/untiwin21" target="_blank" rel="noreferrer"
                   className="contact-card">
                   <div className="contact-icon">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
@@ -585,22 +753,22 @@ const Portfolio = () => {
                   </div>
                   <div>
                     <p className="contact-label">GitHub</p>
-                    <p className="contact-value">github.com/taewoong</p>
+                    <p className="contact-value">github.com/untiwin21</p>
                   </div>
                 </a>
 
-                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
-                  className="contact-card">
+                <div className="contact-card">
                   <div className="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      strokeWidth="2" width="28" height="28">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
                   </div>
                   <div>
-                    <p className="contact-label">LinkedIn</p>
-                    <p className="contact-value">linkedin.com/in/taewoong</p>
+                    <p className="contact-label">Phone</p>
+                    <p className="contact-value">+82) 010-4830-3779</p>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
