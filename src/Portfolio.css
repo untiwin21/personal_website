@@ -128,6 +128,7 @@ p {
   height: 136px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 24%;
   flex-shrink: 0;
   border: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
@@ -195,6 +196,10 @@ p {
 .text-link::after {
   content: ' ↗';
   font-size: 0.86em;
+}
+
+.primary-links .download-link::after {
+  content: ' ↓';
 }
 
 .research-list,
@@ -307,6 +312,18 @@ p {
 .entry-body {
   margin-top: 9px;
   font-size: 15px;
+}
+
+.entry-highlights {
+  margin: 9px 0 0;
+  padding-left: 19px;
+  color: #3f4b5f;
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.entry-highlights li + li {
+  margin-top: 5px;
 }
 
 .entry-links {

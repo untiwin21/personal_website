@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Portfolio.css';
 import MyPhoto from './imgs/my_photo.jpg';
+import SensorFusionImage from './imgs/sensor_fusion.png';
 
 const projectAccent = {
   fusion: '#2563eb',
@@ -206,8 +207,13 @@ const Portfolio = () => {
       kind: 'fusion',
       period: 'Aug 2025 - Mar 2026',
       venue: 'Co-op Project, SKKU Robotics Innovatory',
+      image: SensorFusionImage,
       tags: ['Graph Attention Network', 'Dynamic Occupancy Grid Map', 'LiDAR', 'Radar'],
-      body: 'Developed a Graph Attention Network to estimate uncertainty in LiDAR and radar measurements, then integrated the learned uncertainty into a Dynamic Occupancy Grid Map for reliable obstacle detection.',
+      body: 'Built an uncertainty-aware LiDAR-Radar fusion pipeline to estimate the motion direction of dynamic obstacles and improve reliable navigation. A Graph Attention Network learned measurement uncertainty, which was then incorporated into a Dynamic Occupancy Grid Map.',
+      highlights: [
+        'Defined the research problem, reviewed prior work, and selected the model architecture for a two-person project.',
+        'Designed experiments, analyzed failure cases, and proposed and validated alternatives when sensor behavior or training results were unstable.',
+      ],
       links: [
         { label: 'Project materials', url: 'https://drive.google.com/drive/folders/1A6l83cFcqyf8Ko0SUnCMf3ujQFR4JfUr?usp=drive_link' },
       ],
@@ -222,6 +228,10 @@ const Portfolio = () => {
       image: 'https://img.youtube.com/vi/Lb7DVNLix9U/hqdefault.jpg',
       tags: ['Rocker-Bogie', 'Four-Bar Linkage', 'Mechanical Design', 'Team Leadership'],
       body: 'Led a six-member team in developing a disaster-reconnaissance rover featuring a rocker-bogie suspension and four-bar-linkage transformable wheels for enhanced stair-climbing capability.',
+      highlights: [
+        'Combined a rocker-bogie suspension with transformable wheels so the rover could adapt its contact geometry while climbing stairs.',
+        'Coordinated the mechanical design and integration workflow using Fusion 360 and Inventor, then validated the completed platform through a driving demonstration.',
+      ],
       links: [
         { label: 'Demo video', url: 'https://www.youtube.com/watch?v=Lb7DVNLix9U' },
       ],
@@ -235,7 +245,11 @@ const Portfolio = () => {
       venue: 'Undergraduate Research Program, SKKU Robotics Innovatory',
       image: 'https://raw.githubusercontent.com/untiwin21/4ws-mobile-robot-control/main/docs/robot.png',
       tags: ['Ackermann Steering', 'Inverse Kinematics', 'ROS 1', 'Gazebo'],
-      body: 'Developed multiple driving modes for a four-wheel-independent-steering mobile robot. Implemented Ackermann-based steering kinematics for per-wheel steering angles and velocities, and validated the architecture in Gazebo and on the real robot.',
+      body: 'Developed multiple driving modes for a four-wheel-independent-steering mobile robot whose four wheels can each rotate through 180 degrees. The controller converts a high-level Twist command into the steering angle and angular velocity required by each wheel.',
+      highlights: [
+        'Led the three-person team, divided responsibilities, and designed the end-to-end joystick-to-actuator control flow.',
+        'Created the URDF and Gazebo environment, verified the Ackermann-based kinematics in simulation, and then reproduced the driving modes on the real robot.',
+      ],
       links: [
         { label: 'GitHub', url: 'https://github.com/untiwin21/4ws-mobile-robot-control' },
         { label: 'Project materials', url: 'https://drive.google.com/drive/folders/1OfYiR8YK0zq91z3WM80ZtlFwILq27xls?usp=drive_link' },
@@ -262,7 +276,11 @@ const Portfolio = () => {
       venue: 'Team Project, SKKU Robotics Club - Team Leader',
       image: 'https://img.youtube.com/vi/IX1vHyPMZBo/hqdefault.jpg',
       tags: ['4-DOF Robot Arm', 'ROS 2', 'MoveIt 2', 'Dynamixel', 'Web Interface'],
-      body: 'Led the design and fabrication of a four-DOF robotic arm, implemented motion planning and manipulation using ROS 2 and MoveIt, and developed a web-based beverage ordering interface.',
+      body: 'Led the development of a four-DOF bartender robot that receives a beverage order through the web, plans the manipulation sequence, and serves the selected drink. The system combines custom hardware, robot-arm control, and an Arduino-based dispenser.',
+      highlights: [
+        'Co-designed and fabricated the robot-arm hardware, including the joint layout and end-effector integration.',
+        'Implemented and tested manipulation with ROS 2, MoveIt 2, Gazebo, and Dynamixel actuators, then connected the robot to the ordering interface and dispenser.',
+      ],
       links: [
         { label: 'Robot GitHub', url: 'https://github.com/untiwin21/bartender_robot' },
         { label: 'Web GitHub', url: 'https://github.com/untiwin21/bartender_robot_web' },
@@ -278,7 +296,11 @@ const Portfolio = () => {
       venue: 'Design Lab on Vibration and Dynamic Systems',
       image: 'https://img.youtube.com/vi/tygq8_Xjm6U/hqdefault.jpg',
       tags: ['Autonomous Navigation', 'Launch Mechanism', 'Distance-Based Control'],
-      body: 'Developed an autonomous basketball-shooting robot with a launch mechanism that adjusted the shooting angle according to target distance, together with autonomous target approach and shooting.',
+      body: 'Developed a robot that autonomously approaches predefined shooting positions and scores from different distances. The final platform used LEGO EV3 navigation and a spring-powered striking mechanism whose launch angle changed with target distance.',
+      highlights: [
+        'Reworked the original four-wheel TT-motor chassis into a more steerable three-wheel LEGO EV3 platform and programmed its autonomous motion.',
+        'Helped optimize the spring and striking bar, then used MATLAB kinematic analysis to validate the plate angle and motor position after the demonstration.',
+      ],
       links: [
         { label: 'Demo video', url: 'https://www.youtube.com/shorts/tygq8_Xjm6U?si=30bzVSbiIgdogd_e' },
       ],
@@ -307,6 +329,9 @@ const Portfolio = () => {
       image: 'https://img.youtube.com/vi/IIMJcklUVtw/hqdefault.jpg',
       tags: ['Gear Train', 'Reduction Ratio', 'Joint Layout', 'Mechanical Integration'],
       body: 'Designed and modeled the gears and transmission components of a quadruped robot leg, considering the required reduction ratio, joint layout, and mechanical integration.',
+      highlights: [
+        'Owned the gear design work for the SKKU robotics-club project and supported the final poster and live demonstration.',
+      ],
       links: [
         { label: 'Demo video', url: 'https://www.youtube.com/watch?v=IIMJcklUVtw' },
       ],
@@ -320,7 +345,10 @@ const Portfolio = () => {
       venue: '2022 Smart Car Autonomous Driving Competition',
       image: 'https://img.youtube.com/vi/H3Idl_pO30k/hqdefault.jpg',
       tags: ['Arduino', 'Ultrasonic Sensor', 'Infrared Sensor', 'Autonomous Driving'],
-      body: 'Designed and built an Arduino-based autonomous RC car using ultrasonic and infrared sensors.',
+      body: 'Designed and built an Arduino-based autonomous RC car that used ultrasonic and infrared sensing to navigate the smart-car competition course.',
+      highlights: [
+        'Implemented the Arduino control code and sensor logic; the team placed fourth among ten teams.',
+      ],
       links: [
         { label: 'Demo video', url: 'https://www.youtube.com/shorts/H3Idl_pO30k' },
       ],
@@ -410,7 +438,7 @@ const Portfolio = () => {
         <div className="content-column">
           <section id="about" className="section about-section">
             <div className="about-header">
-              <img src={MyPhoto} alt="Choi Taewoong" />
+              <img src={MyPhoto} alt="Portrait of Choi Taewoong" />
               <div>
                 <p className="eyebrow">Mechanical Engineering · Robotics</p>
                 <h1>Choi Taewoong</h1>
@@ -435,6 +463,7 @@ const Portfolio = () => {
               <a href="mailto:taewoong1377@g.skku.edu">Email</a>
               <a href="https://github.com/untiwin21" target="_blank" rel="noreferrer">GitHub</a>
               <a href="https://www.linkedin.com/in/taewoong-choi-322a53379/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="download-link" href={`${process.env.PUBLIC_URL}/Choi_Taewoong_CV.pdf`} download="Choi_Taewoong_CV.pdf">Download CV</a>
             </div>
           </section>
 
@@ -475,6 +504,11 @@ const Portfolio = () => {
                     {project.period}<br />{project.venue}
                   </div>
                   <div className="entry-body">{project.body}</div>
+                  {project.highlights ? (
+                    <ul className="entry-highlights">
+                      {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                    </ul>
+                  ) : null}
                   <div className="entry-links">
                     {project.links.map((link) => (
                       <a className="text-link" href={link.url} target="_blank" rel="noreferrer" key={link.url}>
